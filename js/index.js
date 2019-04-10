@@ -65,23 +65,39 @@ footertxt.addEventListener('click', event =>{
 
 //dblclick 
 const footer = document.querySelector('footer')
-footer.addEventListener('ckick', event => {
+footer.addEventListener('dblclick', event => {
     console.log('footer was clicked x2')
-    footertxt.style.visability = 'visible'
+    footertxt.style.visibility = 'visible'
 })
 
 //close 
-window.addEventListener('close', function( event ) {
-    // make the close button ineffective
-    event.preventDefault();
-    alert('DON\'T GO')
-  },false);
+window.onbeforeunload = confirmExit;
+function confirmExit() {
+    return " "
+}
+
+// window.addEventListener('beforeunload', function (event) {
+//     event.preventDefault();
+//     event.returnValue = true;
+//   });
+
+// window.onbeforeunload = function(){
+//     return 'Yes?'
+// }
 
 //wheel
 Wpage.addEventListener('wheel' , function(event){
-    
-    }); 
+    console.log('scrolling')
+    Wpage.style.backgroundColor = 'green' 
+}); ///is there anyway to check if the event is active 
+///i was trying to only have this work while the user is scrollling but i couldnt figure it out
+///somthing like if (event === true )
 
+
+//offline
+window.addEventListener('offline', event => {
+    alert('You have lost connection to the internet')///I actually did check this by disconnecting my wifi
+}) 
 
 
 //prop
